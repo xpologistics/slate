@@ -1,0 +1,52 @@
+# Orders
+
+## Create Authenticated Tracking Uri
+
+```ruby
+require 'xpo'
+
+api = Xpo::APIClient.authorize!('XPO_AUTH_KEY')
+api.orders.authentictedTrackingUri(ORDER_ID)
+```
+
+```python
+import xpo
+
+api = xpo.authorize('XPO_AUTH_KEY')
+api.orders.authentictedTrackingUri(ORDER_ID)
+```
+
+```shell
+curl "h<%= config[:host] %>orders/<ID>/authenticted-tracking-uri?bu=<BU>"
+  -X DELETE
+  -H "Authorization: XPO_AUTH_KEY"
+```
+
+```javascript
+const xpo = require('xpo');
+
+let api = xpo.authorize('XPO_AUTH_KEY');
+let response = api.orders.authentictedTrackingUri(ORDER_ID);
+```
+
+> JSON Response:
+
+```json
+{
+  "orderId": 'ORDER_ID',
+  "uri" : "https://track.xpo.com/?orderid=..."
+}
+```
+
+This endpoint can be used to generate an authentucated URI for the XPO Logistics tracking page
+
+### HTTP Request
+
+`POST <%= config[:host] %>orders/<ID>/authenticted-tracking-uri?bu=<BU>`
+
+### URL Parameters
+
+Parameter | Description |  Valid Values |
+--------- | ----------- | ---------------- |
+ID | The id of the order | - |
+BU | The business unit the order belongs to | [Business Units](#business-units) |
