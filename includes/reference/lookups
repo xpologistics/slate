@@ -1,0 +1,26 @@
+<h1 id='lookups'>Lookups</h1><h2 id='business-units'>Business Units</h2>
+<p>The following are the valid values for business unit</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>BR</td>
+<td>Brokerage</td>
+</tr>
+<tr>
+<td>IM</td>
+<td>Intermodal</td>
+</tr>
+<tr>
+<td>LM</td>
+<td>Last Mile</td>
+</tr>
+<tr>
+<td>LTL</td>
+<td>Less Than Truckload</td>
+</tr>
+</tbody></table>

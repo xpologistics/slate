@@ -1,0 +1,42 @@
+<h1 id='errors'>Errors</h1>
+<p>The Connect API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is not formatted correctly.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The API you are trying to access is not available with the current API key.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified entity could not be found.</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Validation  Error -- One or more values in the request are not valid.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>

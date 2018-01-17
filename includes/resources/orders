@@ -1,0 +1,46 @@
+<h1 id='orders'>Orders</h1><h2 id='create-authenticated-tracking-uri'>Create Authenticated Tracking Uri</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'xpo'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">Xpo</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'XPO_AUTH_KEY'</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">orders</span><span class="p">.</span><span class="nf">authentictedTrackingUri</span><span class="p">(</span><span class="no">ORDER_ID</span><span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">xpo</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">xpo</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'XPO_AUTH_KEY'</span><span class="p">)</span>
+<span class="n">api</span><span class="o">.</span><span class="n">orders</span><span class="o">.</span><span class="n">authentictedTrackingUri</span><span class="p">(</span><span class="n">ORDER_ID</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"hhttp://connectxpo.com/orders/&lt;ID&gt;/authenticted-tracking-uri?bu=&lt;BU&gt;"</span>
+  -X DELETE
+  -H <span class="s2">"Authorization: XPO_AUTH_KEY"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xpo</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'xpo'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">xpo</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'XPO_AUTH_KEY'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">orders</span><span class="p">.</span><span class="nx">authentictedTrackingUri</span><span class="p">(</span><span class="nx">ORDER_ID</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>JSON Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="err">'ORDER_ID'</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"uri"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://track.xpo.com/?orderid=..."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint can be used to generate an authentucated URI for the XPO Logistics tracking page</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://connectxpo.com/orders/&lt;ID&gt;/authenticted-tracking-uri?bu=&lt;BU&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Valid Values</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The id of the order</td>
+<td>-</td>
+</tr>
+<tr>
+<td>BU</td>
+<td>The business unit the order belongs to</td>
+<td><a href="#business-units">Business Units</a></td>
+</tr>
+</tbody></table>

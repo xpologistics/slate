@@ -226,17 +226,33 @@
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#create-a-secured-tracking-uri" class="toc-h2 toc-link" data-title="Create a secured tracking uri">Create a secured tracking uri</a>
+                    <a href="#registering-appliction" class="toc-h2 toc-link" data-title="Registering Appliction">Registering Appliction</a>
+                  </li>
+                  <li>
+                    <a href="#authorization-code-with-refresh-token" class="toc-h2 toc-link" data-title="Authorization Code with Refresh Token">Authorization Code with Refresh Token</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#lookups" class="toc-h1 toc-link" data-title="Lookups">Lookups</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#business-units" class="toc-h2 toc-link" data-title="Business Units">Business Units</a>
                   </li>
               </ul>
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+          <li>
+            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-authenticated-tracking-uri" class="toc-h2 toc-link" data-title="Create Authenticated Tracking Uri">Create Authenticated Tracking Uri</a>
+                  </li>
+              </ul>
           </li>
       </div>
         <ul class="toc-footer">
@@ -252,69 +268,57 @@
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'xpo'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">xpo</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'XPO_AUTH_KEY'</span><span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">xpoApi</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">xpoApi</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'XPO_AUTH_KEY'</span><span class="p">)</span>
 </code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
 curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+  -H <span class="s2">"Authorization: XPO_AUTH_KEY"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xpoApi</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'xpo'</span><span class="p">);</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">xpoApi</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'XPO_AUTH_KEY'</span><span class="p">);</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>Make sure to replace <code>XPO_AUTH_KEY</code> with your API key.</p>
 </blockquote>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>The XPO API is JSON based. In order to make an authenticated call to the API, you must include your access token with the call. OAuth2 uses a BEARER token that is passed along in an Authorization header.</p>
+<h2 id='registering-appliction'>Registering Appliction</h2>
+<p>In order to use the XPO API, you must be a current XPO partner. To request access to the API please contact your XPO represenative.</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>Your XPO representative, will provide you with two keys:</p>
 
-<p><code>Authorization: meowmeowmeow</code></p>
+<ul>
+<li><code>APPLICATION_ID</code></li>
+<li><code>APPLICATION_SECRET</code></li>
+</ul>
+<h2 id='authorization-code-with-refresh-token'>Authorization Code with Refresh Token</h2><h1 id='lookups'>Lookups</h1><h2 id='business-units'>Business Units</h2>
+<p>The following are the valid values for business unit</p>
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='orders'>Orders</h1><h2 id='create-a-secured-tracking-uri'>Create a secured tracking uri</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint can be used to generate a URI for the XPO Logistics tracking page</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>POST http://xpoconnect.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Value</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>BR</td>
+<td>Brokerage</td>
+</tr>
+<tr>
+<td>IM</td>
+<td>Intermodal</td>
+</tr>
+<tr>
+<td>LM</td>
+<td>Last Mile</td>
+</tr>
+<tr>
+<td>LTL</td>
+<td>Less Than Truckload</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
@@ -336,11 +340,15 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The API you are trying to access is not available with the current API key</td>
+<td>Forbidden -- The API you are trying to access is not available with the current API key.</td>
 </tr>
 <tr>
 <td>404</td>
 <td>Not Found -- The specified entity could not be found.</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Validation  Error -- One or more values in the request are not valid.</td>
 </tr>
 <tr>
 <td>406</td>
@@ -353,6 +361,52 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <tr>
 <td>503</td>
 <td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+<h1 id='orders'>Orders</h1><h2 id='create-authenticated-tracking-uri'>Create Authenticated Tracking Uri</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'xpo'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">Xpo</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'XPO_AUTH_KEY'</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">orders</span><span class="p">.</span><span class="nf">authentictedTrackingUri</span><span class="p">(</span><span class="no">ORDER_ID</span><span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">xpo</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">xpo</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'XPO_AUTH_KEY'</span><span class="p">)</span>
+<span class="n">api</span><span class="o">.</span><span class="n">orders</span><span class="o">.</span><span class="n">authentictedTrackingUri</span><span class="p">(</span><span class="n">ORDER_ID</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"hhttp://connectxpo.com/orders/&lt;ID&gt;/authenticted-tracking-uri?bu=&lt;BU&gt;"</span>
+  -X DELETE
+  -H <span class="s2">"Authorization: XPO_AUTH_KEY"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xpo</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'xpo'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">xpo</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'XPO_AUTH_KEY'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">orders</span><span class="p">.</span><span class="nx">authentictedTrackingUri</span><span class="p">(</span><span class="nx">ORDER_ID</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>JSON Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="err">'ORDER_ID'</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"uri"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://track.xpo.com/?orderid=..."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint can be used to generate an authentucated URI for the XPO Logistics tracking page</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://connectxpo.com/orders/&lt;ID&gt;/authenticted-tracking-uri?bu=&lt;BU&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Valid Values</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The id of the order</td>
+<td>-</td>
+</tr>
+<tr>
+<td>BU</td>
+<td>The business unit the order belongs to</td>
+<td><a href="#business-units">Business Units</a></td>
 </tr>
 </tbody></table>
 
