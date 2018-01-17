@@ -48,19 +48,19 @@ html, body {
 }
 
 .toc-wrapper {
-  transition: left 0.3s ease-in-out;
-
-  overflow-y: auto;
-  overflow-x: hidden;
+  width: $nav-width;
   position: fixed;
-  z-index: 30;
   top: 0;
   left: 0;
   bottom: 0;
-  width: $nav-width;
-  background-color: $nav-bg;
+  transition: left 0.3s ease-in-out;
+  overflow-y: auto;
+  overflow-x: hidden;
   font-size: 13px;
   font-weight: bold;
+  border-right: 1px solid map-get($xpo-grey, grey-5);
+  background-color: $nav-bg;
+  z-index: 30;
 
   // language selector for mobile devices
   .lang-selector {
@@ -81,16 +81,16 @@ html, body {
     position: relative;
 
     input {
-      background: $nav-bg;
-      border-width: 0 0 1px 0;
-      border-color: $search-box-border-color;
+      width: $nav-width - 30;
+      margin: $nav-v-padding $nav-padding 0;
       padding: 6px 0 6px 20px;
       box-sizing: border-box;
-      margin: $nav-v-padding $nav-padding;
-      width: $nav-width - 30;
-      outline: none;
       color: $nav-text;
+      border-width: 0 0 1px 0;
+      border-color: $search-box-border-color;
       border-radius: 0; /* ios has a default border radius */
+      outline: none;
+      background: $nav-bg;
     }
 
     &:before {
@@ -103,19 +103,21 @@ html, body {
   }
 
   .logo {
-    margin-bottom: $logo-margin;
+    margin: 15px auto $logo-margin;
   }
 
   .search-results {
-    margin-top: 0;
-    box-sizing: border-box;
     height: 0;
+    //margin-top: 0;
+    margin: 0 $nav-padding 25px;
+    box-sizing: border-box;
     overflow-y: auto;
     overflow-x: hidden;
+    background: $nav-subitem-bg;
     transition-property: height, margin;
     transition-duration: 180ms;
     transition-timing-function: ease-in-out;
-    background: $nav-subitem-bg;
+
     &.visible {
       height: 30%;
       margin-bottom: 1em;
@@ -162,13 +164,13 @@ html, body {
 
   // this is parent links of the currently selected ToC entry
   .toc-link.active-parent {
-    background-color: $nav-active-parent-bg;
+    //background-color: $nav-active-parent-bg;
     color: $nav-active-parent-text;
   }
 
   .toc-list-h2 {
     display: none;
-    background-color: $nav-subitem-bg;
+    //background-color: $nav-subitem-bg;
     font-weight: 500;
   }
 
@@ -206,7 +208,7 @@ html, body {
   white-space: nowrap;
   text-overflow: ellipsis;
   text-decoration: none;
-  color: #fff;
+  color: map-get($xpo-grey, grey-10);
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
@@ -317,6 +319,7 @@ html, body {
 // This is all the stuff with the light background in the left half of the page
 
 .content {
+  padding-top: 15px;
   // fixes webkit rendering bug for some: see #538
   -webkit-transform: translateZ(0);
   // to place content above the dark box
@@ -350,13 +353,13 @@ html, body {
   h1 {
     @extend %header-font;
     font-size: 25px;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    //padding-top: 0.5em;
+    //padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    background-color: #fdfdfd;
+    //border-top: 1px solid #ccc;
+    //border-bottom: 1px solid #ccc;
+    //background-color: #fdfdfd;
   }
 
   h1:first-child, div:first-child + h1 {
