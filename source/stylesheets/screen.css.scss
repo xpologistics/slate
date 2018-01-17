@@ -108,11 +108,11 @@ html, body {
 
   .search-results {
     height: 0;
-    //margin-top: 0;
     margin: 0 $nav-padding 25px;
     box-sizing: border-box;
     overflow-y: auto;
     overflow-x: hidden;
+    font-weight: 400;
     background: $nav-subitem-bg;
     transition-property: height, margin;
     transition-duration: 180ms;
@@ -129,7 +129,7 @@ html, body {
     }
 
     a {
-      color: $nav-text;
+      color: $main-text;
       text-decoration: none;
 
       &:hover {
@@ -164,13 +164,11 @@ html, body {
 
   // this is parent links of the currently selected ToC entry
   .toc-link.active-parent {
-    //background-color: $nav-active-parent-bg;
     color: $nav-active-parent-text;
   }
 
   .toc-list-h2 {
     display: none;
-    //background-color: $nav-subitem-bg;
     font-weight: 500;
   }
 
@@ -353,13 +351,8 @@ html, body {
   h1 {
     @extend %header-font;
     font-size: 25px;
-    //padding-top: 0.5em;
-    //padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    //border-top: 1px solid #ccc;
-    //border-bottom: 1px solid #ccc;
-    //background-color: #fdfdfd;
   }
 
   h1:first-child, div:first-child + h1 {
