@@ -455,14 +455,15 @@ html, body {
   }
 
   code {
-    background-color: rgba(0,0,0,0.05);
-    padding: 3px;
+    padding: 5px;
+    color: map-get($xpo-orange, orange);
     border-radius: 3px;
+    background-color: #fafafa;
     @extend %break-words;
     @extend %code-font;
   }
 
-  pre>code {
+  pre > code {
     background-color: transparent;
     padding: 0;
   }
@@ -474,6 +475,15 @@ html, body {
     margin-bottom: 1.5em;
     background: $aside-notice-bg;
     line-height: 1.6;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.4);
+
+    &:before {
+      vertical-align: middle;
+      padding-right: 0.5em;
+      font-size: 14px;
+      color: map-get($xpo-red, red);
+    }
+
 
     &.warning {
       background-color: $aside-warning-bg;
@@ -484,11 +494,7 @@ html, body {
     }
   }
 
-  aside:before {
-    vertical-align: middle;
-    padding-right: 0.5em;
-    font-size: 14px;
-  }
+  
 
   aside.notice:before {
     @extend %icon-info-sign;
@@ -531,7 +537,7 @@ html, body {
 
     @extend %right-col;
 
-    &>p { margin: 0; }
+    & > p { margin: 0; }
 
     a {
       color: #fff;
