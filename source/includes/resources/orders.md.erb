@@ -3,7 +3,7 @@
 ## Create Authenticated Tracking Uri
 
 ```shell
-curl "<%= config[:host] %>orders/<ID>/authenticted-tracking-uri?bu=<BU>"
+curl "<%= config[:host] %>orders/<ID>/authenticated-tracking-uri?bu=<BU>"
   -X POST
   -H "Authorization: Bearer ACCESS_TOKEN"
 ```
@@ -17,11 +17,11 @@ curl "<%= config[:host] %>orders/<ID>/authenticted-tracking-uri?bu=<BU>"
 }
 ```
 
-This endpoint can be used to generate an authentucated URI for the XPO Logistics tracking page
+This endpoint can be used to generate an authenticated URI for the XPO Logistics tracking page
 
 ### HTTP Request
 
-`POST <%= config[:host] %>orders/<ID>/authenticted-tracking-uri?bu=<BU>`
+`POST <%= config[:host] %>orders/<ID>/authenticated-tracking-uri?bu=<BU>`
 
 ### URL Parameters
 
