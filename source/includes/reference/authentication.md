@@ -4,7 +4,7 @@ The XPO [API](https://en.wikipedia.org/wiki/Application_programming_interface) i
 
 ## Registering Your Appliction
 
-Once your XPO partner organization has decided to create an application that connects with the XPO API, you must request official access credentials through through their XPO representative, who will grant the credentials including:
+Once your XPO partner organization has decided to create an application that connects with the XPO API, you must request official access credentials through through your XPO representative, who will grant the credentials including:
 
 * `CLIENT_ID`
 * `CLIENT_SECRET`
