@@ -1,6 +1,6 @@
-<h1 id='orders'>Orders</h1><h2 id='create-authenticated-tracking-uri'>Create Authenticated Tracking Uri</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"hhttps://api.connectxpo.com/orders/&lt;ID&gt;/authenticted-tracking-uri?bu=&lt;BU&gt;"</span>
+<h1 id='orders'>Orders</h1><h2 id='create-authenticated-tracking-uri'>Create Authenticated Tracking Uri</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.connectxpo.com/orders/&lt;ID&gt;/authenticted-tracking-uri?bu=&lt;BU&gt;"</span>
   -X DELETE
-  -H <span class="s2">"Authorization: XPO_AUTH_KEY"</span>
+  -H <span class="s2">"Authorization: Bearer ACCESS_TOKEN"</span>
 </code></pre>
 <blockquote>
 <p>JSON Response:</p>
