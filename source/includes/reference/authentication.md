@@ -2,18 +2,19 @@
 
 The XPO [API](https://en.wikipedia.org/wiki/Application_programming_interface) is a [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer) that returns a [JSON](https://www.json.org/) value.  In order to make an authenticated call to the API, you must include your [access token](https://en.wikipedia.org/wiki/Access_token) with the call.
 
-## Registering Appliction
+## Registering Your Appliction
 
-To use the XPO API, XPO partners must request access credentials through through their XPO representative, who will grant the credentials including:
+Once your XPO partner organization has decided to create an application that connects with the XPO API, you must request official access credentials through through their XPO representative, who will grant the credentials including:
 
 * `CLIENT_ID`
 * `CLIENT_SECRET`
 
-Once you have these special values that are created just for you, and should be appropriately guarded, you are able to use curl from the command line to get an access token.  This should work on any operating system, however you may need to install curl if it is not already installed.
+These values are sensitive, and should be appropriately guarded.
+Once you have these special values that are created just for your application, you can use curl from the command line to get an access token.  This will work on any operating system, as long as curl is installed.
 
-There are ways to call REST APIs from any computer language.  You do not have to use curl.  But to test your access to the API, curl is one very easy way.  Another way would be to use Postman.
+There are ways to call REST APIs from any computer language.  You do not have to use curl.  This is just to show one universal way of connecting.  Another good way to test your connection would be to use Postman.
 
-Here, we show you how to call our API using simple curl commands.  Once you know how to connect with curl, you can then translate the call into your chosen programming language.
+Here, we show you how to call our API using curl.  Once you know how to connect with curl, you can then translate the calls into the programming language that you are writing your application in.
 
 ## Call the Authentication Server (Token Server) to get ACCESS_TOKEN
 
