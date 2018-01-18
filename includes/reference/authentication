@@ -6,6 +6,15 @@
 curl <span class="s2">"https://login.authxpo.com/connect/token"</span>
   -d <span class="s2">"grant_type=client_credentials&amp;client_id=&lt;CLIENT_ID&gt;&amp;client_secret=&lt;CLIENT_SECRET&gt;&amp;scope=connect-orders"</span>
 </code></pre>
+<blockquote>
+<p>JSON Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="s2">"ACCESS_TOKEN"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="mi">3600</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token_type"</span><span class="p">:</span><span class="s2">"Bearer"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p>The XPO API is JSON based. In order to make an authenticated call to the API, you must include your access token with the call.</p>
 <h2 id='registering-appliction'>Registering Appliction</h2>
 <p>In order to use the XPO API, you must be a current XPO partner. To request access to the API please contact your XPO represenative.</p>
