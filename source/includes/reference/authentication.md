@@ -57,3 +57,7 @@ curl -s -X GET \
   "timesTen":360
 }
 ```
+
+## Double check security
+
+- Notice that if you change the ACCESS_TOKEN value at all, or leave it off, the call will not work.
