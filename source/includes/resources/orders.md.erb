@@ -2,31 +2,10 @@
 
 ## Create Authenticated Tracking Uri
 
-```ruby
-require 'xpo'
-
-api = Xpo::APIClient.authorize!('XPO_AUTH_KEY')
-api.orders.authentictedTrackingUri(ORDER_ID)
-```
-
-```python
-import xpo
-
-api = xpo.authorize('XPO_AUTH_KEY')
-api.orders.authentictedTrackingUri(ORDER_ID)
-```
-
 ```shell
-curl "h<%= config[:host] %>orders/<ID>/authenticted-tracking-uri?bu=<BU>"
-  -X DELETE
-  -H "Authorization: XPO_AUTH_KEY"
-```
-
-```javascript
-const xpo = require('xpo');
-
-let api = xpo.authorize('XPO_AUTH_KEY');
-let response = api.orders.authentictedTrackingUri(ORDER_ID);
+curl "<%= config[:host] %>orders/<ID>/authenticted-tracking-uri?bu=<BU>"
+  -X POST
+  -H "Authorization: Bearer ACCESS_TOKEN"
 ```
 
 > JSON Response:

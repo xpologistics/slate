@@ -2,7 +2,7 @@
 require './lib/unique_head.rb'
 
 # API uri
-config[:host] = 'http://connectxpo.com/'
+config[:host] = 'https://api.connectxpo.com/'
 
 # Markdown
 set :markdown_engine, :redcarpet
