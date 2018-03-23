@@ -4,8 +4,14 @@ require './lib/unique_head.rb'
 # API uri
 config[:host] = 'https://api.connectxpo.com/'
 
+#myvars
+set :spublic, "public"
+set :sprivate, "private"
+set :ispublic, true
+set :reference, "/source/includes/reference/"
+set :resources, "/source/includes/resources/"
 # Markdown
-set :markdown_engine, :redcarpet
+set :markdown_engine, :redcarpet	
 set :markdown,
     fenced_code_blocks: true,
     smartypants: true,

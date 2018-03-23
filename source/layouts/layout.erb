@@ -16,11 +16,48 @@ under the License.
 <% language_tabs = current_page.data.language_tabs || [] %>
 <% page_content = yield %>
 <%
-  if current_page.data.includes
-    current_page.data.includes.each do |include|
-      page_content += partial("includes/#{include}")
-    end
-  end
+       # check if public build
+       if config[:ispublic]
+	   # includes public referances
+	   (Dir.entries(File.expand_path(".",Dir.pwd)<<config[:reference]<<"/"<<config[:spublic]).select {|f| !File.directory? f}).each do |f|
+		page_content += partial("includes/reference/public/#{f}") 
+           end
+		
+           #public resources
+           (Dir.entries(File.expand_path(".",Dir.pwd)<<config[:resources]).select {|f1| !File.directory? f1}).each do |f1|
+		
+		if File.exist?(File.expand_path(".",Dir.pwd)<<config[:resources]<<"#{f1}"<<"/#{f1}.md.erb") && File.exist?(File.expand_path(".",Dir.pwd)<<config[:resources]<<"/#{f1}"<<"/public/#{f1}.md.erb")
+		     page_content += partial("includes/resources/#{f1}/#{f1}.md.erb")
+                     page_content += partial("includes/resources/#{f1}/public/#{f1}.md.erb") 
+		    		
+	        end
+        
+           end		
+       else #private build
+	   # includes Private referances
+	   (Dir.entries(File.expand_path(".",Dir.pwd)<<config[:reference]<<"/"<<config[:sprivate]).select {|f| !File.directory? f}).each do |f|
+		page_content += partial("includes/reference/private/#{f}")
+           end
+
+            #private andpublic resources
+           (Dir.entries(File.expand_path(".",Dir.pwd)<<config[:resources]).select {|f1| !File.directory? f1}).each do |f1|
+		
+		if File.exist?(File.expand_path(".",Dir.pwd)<<config[:resources]<<"#{f1}"<<"/#{f1}.md.erb")  
+		     page_content += partial("includes/resources/#{f1}/#{f1}.md.erb")
+		    
+                     if File.exist?(File.expand_path(".",Dir.pwd)<<config[:resources]<<"/#{f1}"<<"/public/#{f1}.md.erb")
+			 page_content += partial("includes/resources/#{f1}/public/#{f1}.md.erb")
+	             end
+		     if File.exist?(File.expand_path(".",Dir.pwd)<<config[:resources]<<"/#{f1}"<<"/private/#{f1}.md.erb")
+			 page_content += partial("includes/resources/#{f1}/private/#{f1}.md.erb")
+	             end	
+                      
+		    		
+	        end
+        
+           end				
+       end	
+
 %>
 
 <!doctype html>
@@ -44,6 +81,8 @@ under the License.
   </head>
 
   <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
+	
+
     <a href="#" id="nav-button">
       <span>
         NAV

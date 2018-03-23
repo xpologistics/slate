@@ -8,10 +8,12 @@ toc_footers:
   - Contact your XPO Rep for access
 
 includes:
-  - reference/authentication
-  - reference/lookups
-  - reference/errors
-  - resources/orders.md.erb
+  - reference/public/authentication
+  - reference/private/authentication	
+  - reference/public/lookups
+  - reference/public/errors
+  - resources/public/orders.md.erb
+  - resources/private/orders.md.erb
 
 search: true
 ---
